@@ -17,24 +17,7 @@
       padding: 20px;
     }
 
-    #login {
-      text-align: center;
-      background: rgba(0,0,0,0.85);
-      padding: 40px 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      max-width: 400px;
-      width: 100%;
-    }
-
-    #login img { width: 360px; margin-bottom: 25px; /* AQUÍ VA EL LOGO */ }
-
-    #login h2 { margin-bottom: 15px; font-size:24px; color:#ffcc00; }
-    #login input { width:80%; padding:12px; margin-bottom:15px; border:none; border-radius:8px; font-size:16px; }
-    #login button { padding:12px 25px; background:#ffcc00; color:#111; font-weight:bold; border:none; border-radius:8px; cursor:pointer; transition:0.3s; }
-    #login button:hover { background:#ffaa00; }
-
-    #gallery { display:none; width:100%; max-width:1200px; }
+    #gallery { width:100%; max-width:1200px; }
 
     #gallery-header { text-align:center; margin-bottom:30px; }
     #gallery-header img { width:300px; margin-bottom:15px; /* AQUÍ VA EL LOGO */ }
@@ -69,17 +52,6 @@
 </head>
 <body>
 
-  <!-- PANTALLA DE ACCESO -->
-  <div id="login">
-    <!-- AQUÍ VA EL LOGO -->
-    <img src="logo.png" alt="Logo Buena Idea">
-    <h2>Acceso a la galería de videos</h2>
-    <p>Introduce la contraseña para continuar:</p>
-    <input type="password" id="passwordInput" placeholder="Contraseña">
-    <br>
-    <button onclick="checkPassword()">Entrar</button>
-  </div>
-
   <!-- GALERÍA DE VIDEOS -->
   <div id="gallery">
     <div id="gallery-header">
@@ -94,16 +66,10 @@
   </div>
 
   <script>
-    function checkPassword() {
-      const input = document.getElementById("passwordInput").value;
-      if(input === "Gaby") {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("gallery").style.display = "block";
-        loadVideos();
-      } else {
-        alert("Clave incorrecta 😅 Intenta de nuevo.");
-      }
-    }
+    // Cargar videos automáticamente al abrir la página
+    window.onload = function() {
+      loadVideos();
+    };
 
     function loadVideos() {
       const videosContainer = document.getElementById("videos-container");
